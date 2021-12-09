@@ -76,4 +76,4 @@ HTTP.@register(ROUTER, "GET", "/index", root)
 HTTP.@register(ROUTER, "GET", "/api/getItems", getItems)
 HTTP.@register(ROUTER, "/api/events", HTTP.Handlers.StreamHandlerFunction(events))
 
-HTTP.serve(ROUTER, "127.0.0.1", 8081)
+HTTP.serve(ROUTER, "0.0.0.0", 8081)
