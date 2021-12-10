@@ -22,11 +22,15 @@ function events(stream::HTTP.Stream)
         return nothing
     end
 
+    @info "GET /api/events"
+
     HTTP.setheader(stream, "Content-Type" => "text/event-stream")
     HTTP.setheader(stream, "Cache-Control" => "no-cache")
-    while true
+    while isopen(stream)
+        @info "ping"
         write(stream, "event: ping\ndata: $(round(Int, time()))\n\n")
         if rand(Bool)
+            @info "data"
             write(stream, "data: $(rand())\n\n")
         end
         sleep(1)
