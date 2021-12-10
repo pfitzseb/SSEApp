@@ -17,6 +17,7 @@ function events(stream::HTTP.Stream)
     HTTP.setheader(stream, "Access-Control-Allow-Origin" => "*")
     HTTP.setheader(stream, "Access-Control-Allow-Methods" => "GET, OPTIONS")
     HTTP.setheader(stream, "Content-Type" => "text/event-stream")
+    HTTP.setheader(stream, "X-Accel-Buffering" => "no")
 
     if HTTP.method(stream.message) == "OPTIONS"
         return nothing
