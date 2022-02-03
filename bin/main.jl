@@ -1,7 +1,7 @@
 using HTTP, JSON
 
 const ROUTER = HTTP.Router()
-
+ENV["JULIA_DEBUG"] = "all"
 function getItems(req::HTTP.Request)
     headers = [
         "Access-Control-Allow-Origin" => "*",
